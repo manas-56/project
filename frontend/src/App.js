@@ -1,37 +1,28 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import Navbar from './components/Navbar';
+import { Link, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import DarkModeToggle from './components/DarkModeToggle';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import VerifyOtp from './pages/VerifyOtp';
 import Profile from './pages/Profile';
-import { useThemeStore } from "./store/useThemeStore";
 import HomePage from './pages/HomePage';
 import Watchlist from './pages/Watchlist';
 import MainLayout from './components/MainLayout';
-import SettingsPage from "./pages/SettingsPage";
-import DarkModeToggle from './components/DarkModeToggle';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const [user, setUser] = useState(null);
   const location = useLocation();
-  
-  // Get theme from store
-  const { theme } = useThemeStore();
-  
+
   useEffect(() => {
     const token = localStorage.getItem('token');
-    const storedUser = localStorage.getItem('user');
-    
-    // Check if storedUser exists before parsing
-    const parsedUser = storedUser ? JSON.parse(storedUser) : null;
-    
+    const storedUser = JSON.parse(localStorage.getItem('user'));
     setIsLoggedIn(!!token);
-    setUser(parsedUser);
+    setUser(storedUser);
   }, []);
 
+  // Close profile menu when changing routes
   useEffect(() => {
     setProfileMenuOpen(false);
   }, [location.pathname]);
@@ -50,86 +41,89 @@ function App() {
     return isLoggedIn ? children : <Navigate to="/login" />;
   };
 
-  // Force theme to retro for debugging
-  const currentTheme = "coffee";
-
   return (
-    <div data-theme={currentTheme} className="min-h-screen flex flex-col">
-      <Navbar
-        isLoggedIn={isLoggedIn}
-        user={user}
-        toggleProfileMenu={toggleProfileMenu}
-        profileMenuOpen={profileMenuOpen}
-        handleLogout={handleLogout}
-      />
-      <DarkModeToggle />
-      <div className="flex-grow pt-5 pb-1 px-1 container mx-auto">
+    <div className="dark:bg-darkBackground bg-lightBackground min-h-screen">
+      {/* Fixed Navbar */}
+      <nav className="fixed top-0 left-0 right-0 z-50 p-4 text-white dark:bg-gray-900 bg-blue-600 shadow">
+        <div className="container mx-auto flex justify-between items-center">
+          <div className="text-xl font-bold">
+            <Link to="/">Stock Market</Link>
+          </div>
+
+          <div className="flex items-center space-x-4">
+            {isLoggedIn && (
+              <Link to="/watchlist" className="text-white hover:text-blue-200">
+                Watchlist
+              </Link>
+            )}
+            
+            <DarkModeToggle />
+
+            {isLoggedIn ? (
+              <div className="relative">
+                <button
+                  onClick={toggleProfileMenu}
+                  className="px-3 py-1 rounded-full bg-blue-700 hover:bg-blue-800 font-bold"
+                >
+                  {user?.name ? user.name[0].toUpperCase() : 'U'}
+                </button>
+                {profileMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-48 shadow-lg rounded-md z-50 dark:bg-gray-800 bg-white text-gray-900 dark:text-white">
+                    <p className="px-4 py-2 border-b dark:border-gray-700">Hi, {user?.name || 'User'}</p>
+                    <Link
+                      to="/profile"
+                      className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      Edit Profile
+                    </Link>
+                    <button
+                      onClick={handleLogout}
+                      className="block px-4 py-2 w-full text-left hover:bg-gray-100 dark:hover:bg-gray-700"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <>
+                <Link to="/signup" className="px-4 py-2 rounded bg-white text-gray-900 hover:bg-opacity-90">Sign Up</Link>
+                <Link to="/login" className="px-4 py-2 rounded bg-white text-gray-900 hover:bg-opacity-90">Login</Link>
+              </>
+            )}
+          </div>
+        </div>
+      </nav>
+
+      {/* Main content area with padding for fixed navbar */}
+      <div className="pt-20 pb-8 px-4 container mx-auto h-screen">
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login setIsLoggedIn={setIsLoggedIn} setUser={setUser} />} />
           <Route path="/verify-otp" element={<VerifyOtp />} />
-          <Route 
-            path="/profile" 
-            element={
-              <ProtectedRoute>
-                <Profile user={user} />
-              </ProtectedRoute>
-            } 
-          />
-          <Route 
-            path="/watchlist" 
-            element={
-              <ProtectedRoute>
-                <MainLayout>
-                  <Watchlist />
-                </MainLayout>
-              </ProtectedRoute>
-            } 
-          />
-          <Route 
-            path="/" 
-            element={
-              isLoggedIn ? (
-                <MainLayout>
-                  <HomePage />
-                </MainLayout>
-              ) : (
-                <Navigate to="/login" />
-              )
-            } 
-          />
-          <Route 
-            path="/settings" 
-            element={
-              <ProtectedRoute>
-                <SettingsPage />
-              </ProtectedRoute>
-            } 
-          />
+          <Route path="/profile" element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          } />
+          <Route path="/watchlist" element={
+            <ProtectedRoute>
+              <MainLayout>
+                <Watchlist />
+              </MainLayout>
+            </ProtectedRoute>
+          } />
+          <Route path="/" element={
+            <ProtectedRoute>
+              <MainLayout>
+                <HomePage />
+              </MainLayout>
+            </ProtectedRoute>
+          } />
+          {/* Fallback route for any unmatched routes */}
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>
-      
-      {/* Theme test elements to verify theme is working
-      <div className="container mx-auto px-4 mb-8">
-        <h3 className="text-xl font-bold mb-2">Theme Test Section</h3>
-        <div className="flex flex-wrap gap-2">
-          <button className="btn btn-primary">Primary Button</button>
-          <button className="btn btn-secondary">Secondary Button</button>
-          <button className="btn btn-accent">Accent Button</button>
-          <button className="btn btn-info">Info Button</button>
-          <button className="btn btn-success">Success Button</button>
-          <button className="btn btn-warning">Warning Button</button>
-          <button className="btn btn-error">Error Button</button>
-        </div>
-        
-        <div className="card w-full md:w-96 bg-base-100 shadow-xl mt-4">
-          <div className="card-body">
-            <h2 className="card-title">Retro Theme Card</h2>
-            <p>This card should display with the retro theme styling if DaisyUI is working correctly.</p>
-          </div>
-        </div> */}
-      {/* </div>// */}
     </div>
   );
 }

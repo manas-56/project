@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
-import { Eye, EyeOff, Loader2, Lock, Mail, MessageSquare, User } from "lucide-react";
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -16,9 +15,7 @@ const Signup = () => {
   const [otp, setOtp] = useState('');
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
   const validateForm = () => {
     const newErrors = {};
     
@@ -70,7 +67,7 @@ const Signup = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/signup', {
+      const response = await axios.post(`${API_URL}/api/auth/signup`, {
         name: formData.name,
         email: formData.email,
         password: formData.password
@@ -80,6 +77,7 @@ const Signup = () => {
       setSuccessMessage('OTP sent to your email. Please verify to continue.');
       setOtpSent(true);
       
+      // Instead of immediately navigating, show success message first
       setTimeout(() => {
         navigate('/verify-otp');
       }, 2000);
@@ -104,7 +102,7 @@ const Signup = () => {
 
     try {
       const email = localStorage.getItem('email');
-      const response = await axios.post('http://localhost:5000/api/auth/verify-otp', { otp, email });
+      const response = await axios.post(`${API_URL}/api/auth/verify-otp`, { otp, email });
       
       setSuccessMessage('Account verified successfully! Redirecting to login...');
       
@@ -121,226 +119,224 @@ const Signup = () => {
   };
 
   return (
-    <div className="min-h-screen grid lg:grid-cols-2">
-      {/* left side */}
-      <div className="flex flex-col justify-center items-center p-3 sm:p-6">
-        <div className="w-full max-w-md space-y-4">
-          {/* LOGO */}
-          <div className="text-center mb-2">
-            <div className="flex flex-col items-center gap-1 group">
-              {/* <div
-                className="size-10 rounded-xl bg-primary/10 flex items-center justify-center 
-                          group-hover:bg-primary/20 transition-colors"
-              >
-                <MessageSquare className="size-5 text-primary" />
-              </div> */}
-              <h1 className="text-xl font-bold mt-1">
-                {otpSent ? 'Verify Your Email' : 'Create Account'}
-              </h1>
-              <p className="text-sm text-base-content/60">
-                {otpSent ? 'Enter the OTP sent to your email' : 'Get started with your free account'}
-              </p>
-            </div>
-          </div>
-
-          {successMessage && (
-            <div className="alert alert-success py-2 mb-2">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+    <div className="flex justify-center items-center min-h-screen dark:bg-darkBackground bg-lightBackground px-4">
+      <div className="dark:bg-gray-800 bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        {successMessage && (
+          <div className="mb-4 p-3 bg-green-100 border border-green-400 text-green-700 rounded">
+            <div className="flex items-center">
+              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               <span>{successMessage}</span>
             </div>
-          )}
-          
-          {errors.submit && (
-            <div className="alert alert-error py-2 mb-2">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </div>
+        )}
+        
+        {errors.submit && (
+          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+            <div className="flex items-center">
+              <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
               </svg>
               <span>{errors.submit}</span>
             </div>
-          )}
-
-          <form onSubmit={otpSent ? handleOtpSubmit : handleSubmit} className="space-y-3">
-            {!otpSent ? (
-              <>
-                <div className="form-control">
-                  <label className="label py-1">
-                    <span className="label-text font-medium">Full Name</span>
-                  </label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <User className="size-4 text-base-content/40" />
-                    </div>
-                    <input
-                      type="text"
-                      name="name"
-                      className={`input input-bordered input-sm h-9 w-full pl-10 ${errors.name ? 'input-error' : ''}`}
-                      placeholder="John Doe"
-                      value={formData.name}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  {errors.name && <div className="text-error text-xs mt-1">{errors.name}</div>}
-                </div>
-
-                <div className="form-control">
-                  <label className="label py-1">
-                    <span className="label-text font-medium">Email</span>
-                  </label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <Mail className="size-4 text-base-content/40" />
-                    </div>
-                    <input
-                      type="email"
-                      name="email"
-                      className={`input input-bordered input-sm h-9 w-full pl-10 ${errors.email ? 'input-error' : ''}`}
-                      placeholder="you@example.com"
-                      value={formData.email}
-                      onChange={handleChange}
-                    />
-                  </div>
-                  {errors.email && <div className="text-error text-xs mt-1">{errors.email}</div>}
-                </div>
-
-                <div className="form-control">
-                  <label className="label py-1">
-                    <span className="label-text font-medium">Password</span>
-                  </label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <Lock className="size-4 text-base-content/40" />
-                    </div>
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      name="password"
-                      className={`input input-bordered input-sm h-9 w-full pl-10 ${errors.password ? 'input-error' : ''}`}
-                      placeholder="••••••••"
-                      value={formData.password}
-                      onChange={handleChange}
-                    />
-                    <button
-                      type="button"
-                      className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                      onClick={() => setShowPassword(!showPassword)}
-                    >
-                      {showPassword ? (
-                        <EyeOff className="size-4 text-base-content/40" />
-                      ) : (
-                        <Eye className="size-4 text-base-content/40" />
-                      )}
-                    </button>
-                  </div>
-                  {errors.password && <div className="text-error text-xs mt-1">{errors.password}</div>}
-                </div>
-
-                <div className="form-control">
-                  <label className="label py-1">
-                    <span className="label-text font-medium">Confirm Password</span>
-                  </label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <Lock className="size-4 text-base-content/40" />
-                    </div>
-                    <input
-                      type={showConfirmPassword ? "text" : "password"}
-                      name="confirmPassword"
-                      className={`input input-bordered input-sm h-9 w-full pl-10 ${errors.confirmPassword ? 'input-error' : ''}`}
-                      placeholder="••••••••"
-                      value={formData.confirmPassword}
-                      onChange={handleChange}
-                    />
-                    <button
-                      type="button"
-                      className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                      onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                    >
-                      {showConfirmPassword ? (
-                        <EyeOff className="size-4 text-base-content/40" />
-                      ) : (
-                        <Eye className="size-4 text-base-content/40" />
-                      )}
-                    </button>
-                  </div>
-                  {errors.confirmPassword && <div className="text-error text-xs mt-1">{errors.confirmPassword}</div>}
-                </div>
-
-                <button type="submit" className="btn btn-primary btn-sm h-9 w-full mt-2" disabled={loading}>
-                  {loading ? (
-                    <>
-                      <Loader2 className="size-4 animate-spin" />
-                      Creating Account...
-                    </>
-                  ) : (
-                    "Create Account"
-                  )}
-                </button>
-              </>
-            ) : (
-              <>
-                <div className="form-control">
-                  <label className="label py-1">
-                    <span className="label-text font-medium">Enter OTP Code</span>
-                  </label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <Lock className="size-4 text-base-content/40" />
-                    </div>
-                    <input
-                      type="text"
-                      className={`input input-bordered input-sm h-9 w-full pl-10 ${errors.otp ? 'input-error' : ''}`}
-                      placeholder="Enter 6-digit OTP"
-                      value={otp}
-                      onChange={handleOtpChange}
-                      maxLength={6}
-                    />
-                  </div>
-                  {errors.otp && <div className="text-error text-xs mt-1">{errors.otp}</div>}
-                  <div className="text-base-content/60 text-xs mt-1">
-                    OTP has been sent to your email address. The code will expire in 15 minutes.
-                  </div>
-                </div>
-
-                <button type="submit" className="btn btn-primary btn-sm h-9 w-full mt-2" disabled={loading}>
-                  {loading ? (
-                    <>
-                      <Loader2 className="size-4 animate-spin" />
-                      Verifying...
-                    </>
-                  ) : (
-                    "Verify OTP"
-                  )}
-                </button>
-              </>
-            )}
-
-            <div className="text-center mt-2">
-              <div className="text-sm text-base-content/60">
-                Already have an account?{" "}
-                <Link to="/login" className="link link-primary">
-                  Sign in
-                </Link>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      {/* right side - content area */}
-      <div className="hidden lg:flex lg:items-center lg:justify-center bg-base-200">
-        <div className="max-w-md p-1 text-center">
-          <div className="mockup-window border bg-base-300 mb-4">
-            <div className="px-4 py-6 bg-base-200 flex flex-col items-center">
-              <div className="radial-progress text-primary" style={{ "--value": 70 }}>70%</div>
-              <h3 className="font-bold mt-3">Market Trends</h3>
-            </div>
           </div>
-          <h2 className="text-xl font-bold mb-1">Join our trading community</h2>
-          <p className="text-sm text-base-content/60">
-            Track your investments, analyze market trends, and make informed trading decisions with our retro-styled interface.
+        )}
+        
+        <form
+          onSubmit={otpSent ? handleOtpSubmit : handleSubmit}
+          className="space-y-5"
+        >
+          <h2 className="text-2xl font-bold text-center dark:text-blue-400 text-blue-600 mb-6">
+            {otpSent ? 'Verify Your Email' : 'Create an Account'}
+          </h2>
+
+          {!otpSent ? (
+            <>
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium mb-1 dark:text-gray-300 text-gray-700">
+                  Full Name
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg className="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <input
+                    id="name"
+                    type="text"
+                    name="name"
+                    value={formData.name}
+                    placeholder="John Doe"
+                    onChange={handleChange}
+                    className={`w-full pl-10 pr-3 py-2 border ${errors.name ? 'border-red-500' : 'dark:border-gray-600 border-gray-300'} rounded-lg 
+                            dark:bg-gray-700 dark:text-white
+                            focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                  />
+                </div>
+                {errors.name && <p className="mt-1 text-sm text-red-500">{errors.name}</p>}
+              </div>
+              
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium mb-1 dark:text-gray-300 text-gray-700">
+                  Email Address
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg className="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                  </div>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    placeholder="you@example.com"
+                    onChange={handleChange}
+                    className={`w-full pl-10 pr-3 py-2 border ${errors.email ? 'border-red-500' : 'dark:border-gray-600 border-gray-300'} rounded-lg 
+                            dark:bg-gray-700 dark:text-white
+                            focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                  />
+                </div>
+                {errors.email && <p className="mt-1 text-sm text-red-500">{errors.email}</p>}
+              </div>
+              
+              <div>
+                <label htmlFor="password" className="block text-sm font-medium mb-1 dark:text-gray-300 text-gray-700">
+                  Password
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg className="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <input
+                    id="password"
+                    type="password"
+                    name="password"
+                    value={formData.password}
+                    placeholder="••••••••"
+                    onChange={handleChange}
+                    className={`w-full pl-10 pr-3 py-2 border ${errors.password ? 'border-red-500' : 'dark:border-gray-600 border-gray-300'} rounded-lg 
+                            dark:bg-gray-700 dark:text-white
+                            focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                  />
+                </div>
+                {errors.password && <p className="mt-1 text-sm text-red-500">{errors.password}</p>}
+              </div>
+              
+              <div>
+                <label htmlFor="confirmPassword" className="block text-sm font-medium mb-1 dark:text-gray-300 text-gray-700">
+                  Confirm Password
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg className="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <input
+                    id="confirmPassword"
+                    type="password"
+                    name="confirmPassword"
+                    value={formData.confirmPassword}
+                    placeholder="••••••••"
+                    onChange={handleChange}
+                    className={`w-full pl-10 pr-3 py-2 border ${errors.confirmPassword ? 'border-red-500' : 'dark:border-gray-600 border-gray-300'} rounded-lg 
+                            dark:bg-gray-700 dark:text-white
+                            focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                  />
+                </div>
+                {errors.confirmPassword && <p className="mt-1 text-sm text-red-500">{errors.confirmPassword}</p>}
+              </div>
+              
+              <button
+                type="submit"
+                className="w-full flex justify-center items-center bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 
+                         dark:bg-blue-500 dark:hover:bg-blue-600
+                         transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                disabled={loading}
+              >
+                {loading ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Creating Account...
+                  </>
+                ) : (
+                  'Sign Up'
+                )}
+              </button>
+            </>
+          ) : (
+            <>
+              <div>
+                <label htmlFor="otp" className="block text-sm font-medium mb-1 dark:text-gray-300 text-gray-700">
+                  Enter OTP Code
+                </label>
+                <div className="relative">
+                  <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <svg className="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                      <path fillRule="evenodd" d="M10 2a1 1 0 011 1v1.323l3.954 1.582 1.599-.8a1 1 0 01.894 1.79l-1.233.616 1.738 5.42a1 1 0 01-.285 1.05A3.989 3.989 0 0115 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.715-5.349L11 6.477V16h2a1 1 0 110 2H7a1 1 0 110-2h2V6.477L6.237 7.582l1.715 5.349a1 1 0 01-.285 1.05A3.989 3.989 0 015 15a3.989 3.989 0 01-2.667-1.019 1 1 0 01-.285-1.05l1.738-5.42-1.233-.617a1 1 0 01.894-1.788l1.599.799L9 4.323V3a1 1 0 011-1zm-5 8.274l-.818 2.552c.25.112.526.174.818.174.292 0 .569-.062.818-.174L5 10.274zm10 0l-.818 2.552c.25.112.526.174.818.174.292 0 .569-.062.818-.174L15 10.274z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <input
+                    id="otp"
+                    type="text"
+                    value={otp}
+                    onChange={handleOtpChange}
+                    placeholder="Enter 6-digit OTP"
+                    className={`w-full pl-10 pr-3 py-2 border ${errors.otp ? 'border-red-500' : 'dark:border-gray-600 border-gray-300'} rounded-lg 
+                             dark:bg-gray-700 dark:text-white
+                             focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                    maxLength={6}
+                  />
+                </div>
+                {errors.otp && <p className="mt-1 text-sm text-red-500">{errors.otp}</p>}
+                
+                <p className="mt-3 text-sm dark:text-gray-400 text-gray-600">
+                  OTP has been sent to your email address. The code will expire in 15 minutes.
+                </p>
+              </div>
+              
+              <button
+                type="submit"
+                className="w-full flex justify-center items-center bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 
+                         dark:bg-blue-500 dark:hover:bg-blue-600
+                         transition duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                disabled={loading}
+              >
+                {loading ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Verifying...
+                  </>
+                ) : (
+                  'Verify OTP'
+                )}
+              </button>
+            </>
+          )}
+          
+          <p className="text-center text-sm dark:text-gray-400 text-gray-600">
+            Already have an account?{' '}
+            <a 
+              href="/login" 
+              className="font-medium text-blue-600 dark:text-blue-400 hover:underline"
+            >
+              Log in
+            </a>
           </p>
-        </div>
+        </form>
       </div>
     </div>
   );

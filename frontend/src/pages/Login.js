@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { Eye, EyeOff, Loader2, Lock, Mail, BarChart2 } from 'lucide-react';
-import AuthImagePattern from "../components/AuthImagePattern"; // Assuming you'll create this component
+import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import AuthImagePattern from "../components/AuthImagePattern";
+import { Eye, EyeOff, Loader2, Lock, Mail, TrendingUp } from 'lucide-react';
 
 const Login = ({ setIsLoggedIn, setUser }) => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ const Login = ({ setIsLoggedIn, setUser }) => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-
+  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -31,7 +32,7 @@ const Login = ({ setIsLoggedIn, setUser }) => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch(`${API_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -60,28 +61,23 @@ const Login = ({ setIsLoggedIn, setUser }) => {
   return (
     <div className="min-h-screen flex flex-col lg:grid lg:grid-cols-2">
       {/* Left Side - Form */}
-      <div className="flex flex-col justify-center items-center p-1 sm:p-1">
-        <div className="w-full max-w-md space-y-10">
+      <div className="flex flex-col justify-center items-center bg-base-200 p-6 sm:p-12">
+        <div className="w-full max-w-md space-y-8">
           {/* Logo */}
-          <div className="text-center mb-1">
+          <div className="text-center mb-8">
             <div className="flex flex-col items-center gap-2 group">
-              <div
-                className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20
-              transition-colors"
-              >
-                <BarChart2 className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <TrendingUp className="w-6 h-6 text-primary" /> {/* Updated icon to TrendingUp */}
               </div>
               <h1 className="text-2xl font-bold mt-2">Welcome Back</h1>
               <p className="text-base-content/60">Sign in to your account</p>
             </div>
           </div>
 
-          {/* Error display */}
+          {/* Error */}
           {error && (
-            <div className="alert alert-error shadow-lg">
-              <div>
-                <span>{error}</span>
-              </div>
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative">
+              {error}
             </div>
           )}
 
@@ -102,7 +98,6 @@ const Login = ({ setIsLoggedIn, setUser }) => {
                   placeholder="you@example.com"
                   value={formData.email}
                   onChange={handleChange}
-                  required
                 />
               </div>
             </div>
@@ -116,13 +111,12 @@ const Login = ({ setIsLoggedIn, setUser }) => {
                   <Lock className="h-5 w-5 text-base-content/40" />
                 </div>
                 <input
-                  type={showPassword ? "text" : "password"}
+                  type={showPassword ? 'text' : 'password'}
                   name="password"
                   className="input input-bordered w-full pl-10"
                   placeholder="••••••••"
                   value={formData.password}
                   onChange={handleChange}
-                  required
                 />
                 <button
                   type="button"
@@ -138,21 +132,25 @@ const Login = ({ setIsLoggedIn, setUser }) => {
               </div>
             </div>
 
-            <button type="submit" className="btn btn-primary w-full" disabled={loading}>
+            <button
+              type="submit"
+              className="btn btn-primary w-full"
+              disabled={loading}
+            >
               {loading ? (
                 <>
                   <Loader2 className="h-5 w-5 animate-spin" />
-                  Logging In...
+                  Loading...
                 </>
               ) : (
-                "Sign in"
+                'Sign in'
               )}
             </button>
           </form>
 
           <div className="text-center">
             <p className="text-base-content/60">
-              Don&apos;t have an account?{" "}
+              Don&apos;t have an account?{' '}
               <Link to="/signup" className="link link-primary">
                 Create account
               </Link>
@@ -163,8 +161,8 @@ const Login = ({ setIsLoggedIn, setUser }) => {
 
       {/* Right Side - Image/Pattern */}
       <AuthImagePattern
-        title={"Welcome back, investor!"}
-        subtitle={"Sign in to track your stocks, view your portfolio, and stay updated with market trends."}
+        title={"Welcome back!"}
+        subtitle={"Sign in to continue"}
       />
     </div>
   );
