@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_IMAGE = "gitlab.example.com/your-group/your-project:latest"
+        GITLAB_REGISTRY_CREDENTIALS = 'gitlab-credentials-id'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'npm install' // Replace with your build command
+                sh 'npm run build' // Replace with your build command
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'npm test' // Replace with your test command
+            }
+        }
+
+        stage('Docker Build & Push') {
+            steps {
+                script {
+                    docker.withRegistry('https://gitlab.example.com', GITLAB_REGISTRY_CREDENTIALS) {
+                        def app = docker.build("${DOCKER_IMAGE}")
+                        app.push()
+                    }
+                }
+            }
+        }
+
+        stage('Publish Artifacts') {
+            steps {
+                archiveArtifacts artifacts: '**/build/**', fingerprint: true
+            }
+        }
+    }
+
+    post {
+        always {
+            cleanWs()
+        }
+    }
+}
