@@ -15,7 +15,7 @@ const Signup = () => {
   const [otp, setOtp] = useState('');
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState('');
-  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+  const API_URL = 'http://localhost:5000';
   const validateForm = () => {
     const newErrors = {};
     

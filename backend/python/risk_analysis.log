@@ -1,0 +1,68 @@
+2025-05-22 21:57:31,135 - root - INFO - Performing risk analysis for AAPL
+2025-05-22 21:57:35,729 - yfinance - ERROR - AAPL: No price data found, symbol may be delisted (period=1y)
+2025-05-22 21:57:36,085 - yfinance - ERROR - AAPL: No price data found, symbol may be delisted (period=6mo)
+2025-05-22 21:57:36,442 - yfinance - ERROR - AAPL: No price data found, symbol may be delisted (period=3mo)
+2025-05-22 21:57:36,803 - yfinance - ERROR - AAPL: No price data found, symbol may be delisted (period=1mo)
+2025-05-22 21:57:36,805 - root - ERROR - Error in risk analysis model for AAPL: module 'yfinance.shared' has no attribute 'exceptions'
+2025-05-22 21:57:36,809 - root - ERROR - Traceback (most recent call last):
+  File "D:\project\Stock_Flipr\backend\python\risk_analysis.py", line 69, in get_stock_data
+    raise ValueError(f"No data found for ticker: {ticker}")
+ValueError: No data found for ticker: AAPL
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\project\Stock_Flipr\backend\python\risk_analysis.py", line 314, in risk_analysis_model
+    data = get_stock_data(new_stock_ticker)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\Stock_Flipr\backend\python\risk_analysis.py", line 73, in get_stock_data
+    except yf.shared.exceptions.YFinanceError as yfe:
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'yfinance.shared' has no attribute 'exceptions'
+
+2025-05-22 22:33:39,779 - root - INFO - Performing risk analysis for AAPL
+2025-05-22 22:33:40,889 - root - ERROR - Failed to load model or scaler: node array from the pickle has an incompatible dtype:
+- expected: {'names': ['left_child', 'right_child', 'feature', 'threshold', 'impurity', 'n_node_samples', 'weighted_n_node_samples', 'missing_go_to_left'], 'formats': ['<i8', '<i8', '<i8', '<f8', '<f8', '<i8', '<f8', 'u1'], 'offsets': [0, 8, 16, 24, 32, 40, 48, 56], 'itemsize': 64}
+- got     : [('left_child', '<i8'), ('right_child', '<i8'), ('feature', '<i8'), ('threshold', '<f8'), ('impurity', '<f8'), ('n_node_samples', '<i8'), ('weighted_n_node_samples', '<f8')]
+2025-05-22 22:33:40,889 - root - ERROR - Error in risk analysis model for AAPL: Failed to load model or scaler: node array from the pickle has an incompatible dtype:
+- expected: {'names': ['left_child', 'right_child', 'feature', 'threshold', 'impurity', 'n_node_samples', 'weighted_n_node_samples', 'missing_go_to_left'], 'formats': ['<i8', '<i8', '<i8', '<f8', '<f8', '<i8', '<f8', 'u1'], 'offsets': [0, 8, 16, 24, 32, 40, 48, 56], 'itemsize': 64}
+- got     : [('left_child', '<i8'), ('right_child', '<i8'), ('feature', '<i8'), ('threshold', '<f8'), ('impurity', '<f8'), ('n_node_samples', '<i8'), ('weighted_n_node_samples', '<f8')]
+2025-05-22 22:33:40,906 - root - ERROR - Traceback (most recent call last):
+  File "D:\project\Stock_Flipr\backend\python\risk_analysis.py", line 292, in load_model_and_scaler
+    model = joblib.load(model_path)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\joblib\numpy_pickle.py", line 658, in load
+    obj = _unpickle(fobj, filename, mmap_mode)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\joblib\numpy_pickle.py", line 577, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\pickle.py", line 1213, in load
+    dispatch[key[0]](self)
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\joblib\numpy_pickle.py", line 402, in load_build
+    Unpickler.load_build(self)
+  File "C:\Program Files\Python311\Lib\pickle.py", line 1718, in load_build
+    setstate(state)
+  File "_tree.pyx", line 848, in sklearn.tree._tree.Tree.__setstate__
+  File "_tree.pyx", line 1554, in sklearn.tree._tree._check_node_ndarray
+ValueError: node array from the pickle has an incompatible dtype:
+- expected: {'names': ['left_child', 'right_child', 'feature', 'threshold', 'impurity', 'n_node_samples', 'weighted_n_node_samples', 'missing_go_to_left'], 'formats': ['<i8', '<i8', '<i8', '<f8', '<f8', '<i8', '<f8', 'u1'], 'offsets': [0, 8, 16, 24, 32, 40, 48, 56], 'itemsize': 64}
+- got     : [('left_child', '<i8'), ('right_child', '<i8'), ('feature', '<i8'), ('threshold', '<f8'), ('impurity', '<f8'), ('n_node_samples', '<i8'), ('weighted_n_node_samples', '<f8')]
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\project\Stock_Flipr\backend\python\risk_analysis.py", line 333, in risk_analysis_model
+    model, scaler, features_used = load_model_and_scaler(model_path, scaler_path)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\Stock_Flipr\backend\python\risk_analysis.py", line 306, in load_model_and_scaler
+    raise ValueError(f"Failed to load model or scaler: {e}")
+ValueError: Failed to load model or scaler: node array from the pickle has an incompatible dtype:
+- expected: {'names': ['left_child', 'right_child', 'feature', 'threshold', 'impurity', 'n_node_samples', 'weighted_n_node_samples', 'missing_go_to_left'], 'formats': ['<i8', '<i8', '<i8', '<f8', '<f8', '<i8', '<f8', 'u1'], 'offsets': [0, 8, 16, 24, 32, 40, 48, 56], 'itemsize': 64}
+- got     : [('left_child', '<i8'), ('right_child', '<i8'), ('feature', '<i8'), ('threshold', '<f8'), ('impurity', '<f8'), ('n_node_samples', '<i8'), ('weighted_n_node_samples', '<f8')]
+
+2025-05-22 22:35:33,201 - root - INFO - Performing risk analysis for AAPL
+2025-05-22 22:35:40,882 - root - INFO - Model for AAPL trained and saved with accuracy: 0.9600
+2025-05-22 22:40:43,020 - root - INFO - Performing risk analysis for AAPL
+2025-05-22 22:50:19,430 - root - INFO - Performing risk analysis for AAPL
+2025-05-22 22:50:27,114 - root - INFO - Model for AAPL trained and saved with accuracy: 0.9600

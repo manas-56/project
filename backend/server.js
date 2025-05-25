@@ -8,6 +8,7 @@ const userRoutes = require('./routes/userRoutes');
 const watchlistRoutes = require('./routes/watchlistRoutes');
 
 const stockRoutes = require('./routes/stockRoutes.js');
+const { getStockRiskAnalysis } = require('./controllers/stockController.js');
 
 
 dotenv.config();
@@ -16,7 +17,7 @@ const app = express();
 
 // CORS Middleware
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: 'http://localhost:3000',
   credentials: true
 }));
 

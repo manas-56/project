@@ -10,7 +10,7 @@ const Login = ({ setIsLoggedIn, setUser }) => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+  const API_URL = 'http://localhost:5000';
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
