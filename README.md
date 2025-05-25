@@ -99,15 +99,6 @@ python prediction_analysis.py
 
 ---
 
-## 🤝 Contributors
-
-- [Harshith Bezawada](https://github.com/Harshith20B)
-- [Akash](https://github.com/anayakgit)
-- [Ajay Nayak](https://github.com/username3)
-- [Abhyudaya Singh](https://github.com/Drotum)
-
----
-
 ## 📃 License
 
 This project is licensed under the **MIT License**. Feel free to use, modify, and share!
