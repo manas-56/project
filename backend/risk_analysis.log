@@ -1779,3 +1779,762 @@ Traceback (most recent call last):
 AttributeError: module 'yfinance.shared' has no attribute 'exceptions'
 
 2025-05-25 16:11:36,915 - root - INFO - Performing risk analysis for AMZN
+2025-05-25 19:04:40,705 - root - INFO - Performing risk analysis for AAPL
+2025-05-25 19:04:43,857 - root - ERROR - Error in risk analysis model for AAPL: module 'yfinance.shared' has no attribute 'exceptions'
+2025-05-25 19:04:43,860 - root - ERROR - Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 58, in get_stock_data
+    hist = stock.history(period=period, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\base.py", line 82, in history
+    return self._lazy_load_price_history().history(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\scrapers\history.py", line 175, in history
+    data = get_fn(
+           ^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 349, in get
+    return self._make_request(url, request_method = self._session.get, user_agent_headers=user_agent_headers, params=params, proxy=proxy, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 411, in _make_request
+    raise YFRateLimitError()
+yfinance.exceptions.YFRateLimitError: Too Many Requests. Rate limited. Try after a while.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 314, in risk_analysis_model
+    data = get_stock_data(new_stock_ticker)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Stock\backend\python\risk_analysis.py", line 73, in get_stock_data
+    except yf.shared.exceptions.YFinanceError as yfe:
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'yfinance.shared' has no attribute 'exceptions'
+
+2025-05-25 19:04:45,970 - root - INFO - Performing risk analysis for AAPL
+2025-05-25 19:04:47,579 - root - ERROR - Error in risk analysis model for AAPL: module 'yfinance.shared' has no attribute 'exceptions'
+2025-05-25 19:04:47,581 - root - ERROR - Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 58, in get_stock_data
+    hist = stock.history(period=period, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\base.py", line 82, in history
+    return self._lazy_load_price_history().history(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\scrapers\history.py", line 175, in history
+    data = get_fn(
+           ^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 349, in get
+    return self._make_request(url, request_method = self._session.get, user_agent_headers=user_agent_headers, params=params, proxy=proxy, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 411, in _make_request
+    raise YFRateLimitError()
+yfinance.exceptions.YFRateLimitError: Too Many Requests. Rate limited. Try after a while.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 314, in risk_analysis_model
+    data = get_stock_data(new_stock_ticker)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Stock\backend\python\risk_analysis.py", line 73, in get_stock_data
+    except yf.shared.exceptions.YFinanceError as yfe:
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'yfinance.shared' has no attribute 'exceptions'
+
+2025-05-25 19:04:48,005 - root - INFO - Performing risk analysis for GOOGL
+2025-05-25 19:04:51,575 - root - ERROR - Error in risk analysis model for GOOGL: module 'yfinance.shared' has no attribute 'exceptions'
+2025-05-25 19:04:51,578 - root - ERROR - Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 58, in get_stock_data
+    hist = stock.history(period=period, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\base.py", line 82, in history
+    return self._lazy_load_price_history().history(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\scrapers\history.py", line 175, in history
+    data = get_fn(
+           ^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 349, in get
+    return self._make_request(url, request_method = self._session.get, user_agent_headers=user_agent_headers, params=params, proxy=proxy, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 411, in _make_request
+    raise YFRateLimitError()
+yfinance.exceptions.YFRateLimitError: Too Many Requests. Rate limited. Try after a while.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 314, in risk_analysis_model
+    data = get_stock_data(new_stock_ticker)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Stock\backend\python\risk_analysis.py", line 73, in get_stock_data
+    except yf.shared.exceptions.YFinanceError as yfe:
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'yfinance.shared' has no attribute 'exceptions'
+
+2025-05-25 19:04:51,740 - root - INFO - Performing risk analysis for NVDA
+2025-05-25 19:04:53,528 - root - ERROR - Error in risk analysis model for NVDA: module 'yfinance.shared' has no attribute 'exceptions'
+2025-05-25 19:04:53,531 - root - ERROR - Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 58, in get_stock_data
+    hist = stock.history(period=period, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\base.py", line 82, in history
+    return self._lazy_load_price_history().history(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\scrapers\history.py", line 175, in history
+    data = get_fn(
+           ^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 349, in get
+    return self._make_request(url, request_method = self._session.get, user_agent_headers=user_agent_headers, params=params, proxy=proxy, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 411, in _make_request
+    raise YFRateLimitError()
+yfinance.exceptions.YFRateLimitError: Too Many Requests. Rate limited. Try after a while.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 314, in risk_analysis_model
+    data = get_stock_data(new_stock_ticker)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Stock\backend\python\risk_analysis.py", line 73, in get_stock_data
+    except yf.shared.exceptions.YFinanceError as yfe:
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'yfinance.shared' has no attribute 'exceptions'
+
+2025-05-25 19:04:55,452 - root - INFO - Performing risk analysis for AMZN
+2025-05-25 19:04:57,540 - root - ERROR - Error in risk analysis model for AMZN: module 'yfinance.shared' has no attribute 'exceptions'
+2025-05-25 19:04:57,544 - root - ERROR - Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 58, in get_stock_data
+    hist = stock.history(period=period, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\base.py", line 82, in history
+    return self._lazy_load_price_history().history(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\scrapers\history.py", line 175, in history
+    data = get_fn(
+           ^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 349, in get
+    return self._make_request(url, request_method = self._session.get, user_agent_headers=user_agent_headers, params=params, proxy=proxy, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 411, in _make_request
+    raise YFRateLimitError()
+yfinance.exceptions.YFRateLimitError: Too Many Requests. Rate limited. Try after a while.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 314, in risk_analysis_model
+    data = get_stock_data(new_stock_ticker)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Stock\backend\python\risk_analysis.py", line 73, in get_stock_data
+    except yf.shared.exceptions.YFinanceError as yfe:
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'yfinance.shared' has no attribute 'exceptions'
+
+2025-05-25 19:04:57,609 - root - INFO - Performing risk analysis for MSFT
+2025-05-25 19:06:05,689 - root - INFO - Performing risk analysis for TSLA
+2025-05-25 19:06:06,102 - root - ERROR - Failed to load model or scaler: node array from the pickle has an incompatible dtype:
+- expected: [('left_child', '<i8'), ('right_child', '<i8'), ('feature', '<i8'), ('threshold', '<f8'), ('impurity', '<f8'), ('n_node_samples', '<i8'), ('weighted_n_node_samples', '<f8')]
+- got     : {'names': ['left_child', 'right_child', 'feature', 'threshold', 'impurity', 'n_node_samples', 'weighted_n_node_samples', 'missing_go_to_left'], 'formats': ['<i8', '<i8', '<i8', '<f8', '<f8', '<i8', '<f8', 'u1'], 'offsets': [0, 8, 16, 24, 32, 40, 48, 56], 'itemsize': 64}
+2025-05-25 19:06:06,102 - root - ERROR - Error in risk analysis model for TSLA: Failed to load model or scaler: node array from the pickle has an incompatible dtype:
+- expected: [('left_child', '<i8'), ('right_child', '<i8'), ('feature', '<i8'), ('threshold', '<f8'), ('impurity', '<f8'), ('n_node_samples', '<i8'), ('weighted_n_node_samples', '<f8')]
+- got     : {'names': ['left_child', 'right_child', 'feature', 'threshold', 'impurity', 'n_node_samples', 'weighted_n_node_samples', 'missing_go_to_left'], 'formats': ['<i8', '<i8', '<i8', '<f8', '<f8', '<i8', '<f8', 'u1'], 'offsets': [0, 8, 16, 24, 32, 40, 48, 56], 'itemsize': 64}
+2025-05-25 19:06:06,127 - root - ERROR - Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 292, in load_model_and_scaler
+    model = joblib.load(model_path)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\joblib\numpy_pickle.py", line 658, in load
+    obj = _unpickle(fobj, filename, mmap_mode)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\joblib\numpy_pickle.py", line 577, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\pickle.py", line 1213, in load
+    dispatch[key[0]](self)
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\joblib\numpy_pickle.py", line 402, in load_build
+    Unpickler.load_build(self)
+  File "C:\Program Files\Python311\Lib\pickle.py", line 1718, in load_build
+    setstate(state)
+  File "sklearn\tree\_tree.pyx", line 676, in sklearn.tree._tree.Tree.__setstate__
+  File "sklearn\tree\_tree.pyx", line 1364, in sklearn.tree._tree._check_node_ndarray
+ValueError: node array from the pickle has an incompatible dtype:
+- expected: [('left_child', '<i8'), ('right_child', '<i8'), ('feature', '<i8'), ('threshold', '<f8'), ('impurity', '<f8'), ('n_node_samples', '<i8'), ('weighted_n_node_samples', '<f8')]
+- got     : {'names': ['left_child', 'right_child', 'feature', 'threshold', 'impurity', 'n_node_samples', 'weighted_n_node_samples', 'missing_go_to_left'], 'formats': ['<i8', '<i8', '<i8', '<f8', '<f8', '<i8', '<f8', 'u1'], 'offsets': [0, 8, 16, 24, 32, 40, 48, 56], 'itemsize': 64}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 333, in risk_analysis_model
+    model, scaler, features_used = load_model_and_scaler(model_path, scaler_path)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Stock\backend\python\risk_analysis.py", line 306, in load_model_and_scaler
+    raise ValueError(f"Failed to load model or scaler: {e}")
+ValueError: Failed to load model or scaler: node array from the pickle has an incompatible dtype:
+- expected: [('left_child', '<i8'), ('right_child', '<i8'), ('feature', '<i8'), ('threshold', '<f8'), ('impurity', '<f8'), ('n_node_samples', '<i8'), ('weighted_n_node_samples', '<f8')]
+- got     : {'names': ['left_child', 'right_child', 'feature', 'threshold', 'impurity', 'n_node_samples', 'weighted_n_node_samples', 'missing_go_to_left'], 'formats': ['<i8', '<i8', '<i8', '<f8', '<f8', '<i8', '<f8', 'u1'], 'offsets': [0, 8, 16, 24, 32, 40, 48, 56], 'itemsize': 64}
+
+2025-05-25 19:06:12,869 - root - INFO - Performing risk analysis for META
+2025-05-25 19:06:14,758 - root - ERROR - Error in risk analysis model for META: module 'yfinance.shared' has no attribute 'exceptions'
+2025-05-25 19:06:14,761 - root - ERROR - Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 58, in get_stock_data
+    hist = stock.history(period=period, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\base.py", line 82, in history
+    return self._lazy_load_price_history().history(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\scrapers\history.py", line 175, in history
+    data = get_fn(
+           ^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 349, in get
+    return self._make_request(url, request_method = self._session.get, user_agent_headers=user_agent_headers, params=params, proxy=proxy, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 411, in _make_request
+    raise YFRateLimitError()
+yfinance.exceptions.YFRateLimitError: Too Many Requests. Rate limited. Try after a while.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 314, in risk_analysis_model
+    data = get_stock_data(new_stock_ticker)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Stock\backend\python\risk_analysis.py", line 73, in get_stock_data
+    except yf.shared.exceptions.YFinanceError as yfe:
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'yfinance.shared' has no attribute 'exceptions'
+
+2025-05-25 19:13:28,165 - root - INFO - Performing risk analysis for MSFT
+2025-05-25 19:13:31,773 - root - ERROR - Error fetching data for ticker MSFT: Too Many Requests. Rate limited. Try after a while.
+2025-05-25 19:13:31,774 - root - ERROR - Error in risk analysis model for MSFT: Failed to fetch data for MSFT: Too Many Requests. Rate limited. Try after a while.
+2025-05-25 19:13:31,779 - root - ERROR - Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 58, in get_stock_data
+    hist = stock.history(period=period, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\base.py", line 82, in history
+    return self._lazy_load_price_history().history(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\scrapers\history.py", line 175, in history
+    data = get_fn(
+           ^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 349, in get
+    return self._make_request(url, request_method = self._session.get, user_agent_headers=user_agent_headers, params=params, proxy=proxy, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 411, in _make_request
+    raise YFRateLimitError()
+yfinance.exceptions.YFRateLimitError: Too Many Requests. Rate limited. Try after a while.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 311, in risk_analysis_model
+    data = get_stock_data(new_stock_ticker)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Stock\backend\python\risk_analysis.py", line 75, in get_stock_data
+    raise ValueError(f"Failed to fetch data for {ticker}: {e}")
+ValueError: Failed to fetch data for MSFT: Too Many Requests. Rate limited. Try after a while.
+
+2025-05-25 19:13:33,802 - root - INFO - Performing risk analysis for MSFT
+2025-05-25 19:13:39,347 - root - INFO - Performing risk analysis for AMZN
+2025-05-25 19:13:45,270 - root - INFO - Performing risk analysis for META
+2025-05-25 19:13:47,393 - root - ERROR - Error fetching data for ticker META: Too Many Requests. Rate limited. Try after a while.
+2025-05-25 19:13:47,393 - root - ERROR - Error in risk analysis model for META: Failed to fetch data for META: Too Many Requests. Rate limited. Try after a while.
+2025-05-25 19:13:47,396 - root - ERROR - Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 58, in get_stock_data
+    hist = stock.history(period=period, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\base.py", line 82, in history
+    return self._lazy_load_price_history().history(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\scrapers\history.py", line 175, in history
+    data = get_fn(
+           ^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 349, in get
+    return self._make_request(url, request_method = self._session.get, user_agent_headers=user_agent_headers, params=params, proxy=proxy, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 411, in _make_request
+    raise YFRateLimitError()
+yfinance.exceptions.YFRateLimitError: Too Many Requests. Rate limited. Try after a while.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 311, in risk_analysis_model
+    data = get_stock_data(new_stock_ticker)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Stock\backend\python\risk_analysis.py", line 75, in get_stock_data
+    raise ValueError(f"Failed to fetch data for {ticker}: {e}")
+ValueError: Failed to fetch data for META: Too Many Requests. Rate limited. Try after a while.
+
+2025-05-25 19:14:01,015 - root - INFO - Performing risk analysis for AAPL
+2025-05-25 19:14:01,710 - root - ERROR - Failed to load model or scaler: node array from the pickle has an incompatible dtype:
+- expected: [('left_child', '<i8'), ('right_child', '<i8'), ('feature', '<i8'), ('threshold', '<f8'), ('impurity', '<f8'), ('n_node_samples', '<i8'), ('weighted_n_node_samples', '<f8')]
+- got     : {'names': ['left_child', 'right_child', 'feature', 'threshold', 'impurity', 'n_node_samples', 'weighted_n_node_samples', 'missing_go_to_left'], 'formats': ['<i8', '<i8', '<i8', '<f8', '<f8', '<i8', '<f8', 'u1'], 'offsets': [0, 8, 16, 24, 32, 40, 48, 56], 'itemsize': 64}
+2025-05-25 19:14:01,712 - root - ERROR - Error in risk analysis model for AAPL: Failed to load model or scaler: node array from the pickle has an incompatible dtype:
+- expected: [('left_child', '<i8'), ('right_child', '<i8'), ('feature', '<i8'), ('threshold', '<f8'), ('impurity', '<f8'), ('n_node_samples', '<i8'), ('weighted_n_node_samples', '<f8')]
+- got     : {'names': ['left_child', 'right_child', 'feature', 'threshold', 'impurity', 'n_node_samples', 'weighted_n_node_samples', 'missing_go_to_left'], 'formats': ['<i8', '<i8', '<i8', '<f8', '<f8', '<i8', '<f8', 'u1'], 'offsets': [0, 8, 16, 24, 32, 40, 48, 56], 'itemsize': 64}
+2025-05-25 19:14:01,714 - root - ERROR - Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 289, in load_model_and_scaler
+    model = joblib.load(model_path)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\joblib\numpy_pickle.py", line 658, in load
+    obj = _unpickle(fobj, filename, mmap_mode)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\joblib\numpy_pickle.py", line 577, in _unpickle
+    obj = unpickler.load()
+          ^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python311\Lib\pickle.py", line 1213, in load
+    dispatch[key[0]](self)
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\joblib\numpy_pickle.py", line 402, in load_build
+    Unpickler.load_build(self)
+  File "C:\Program Files\Python311\Lib\pickle.py", line 1718, in load_build
+    setstate(state)
+  File "sklearn\tree\_tree.pyx", line 676, in sklearn.tree._tree.Tree.__setstate__
+  File "sklearn\tree\_tree.pyx", line 1364, in sklearn.tree._tree._check_node_ndarray
+ValueError: node array from the pickle has an incompatible dtype:
+- expected: [('left_child', '<i8'), ('right_child', '<i8'), ('feature', '<i8'), ('threshold', '<f8'), ('impurity', '<f8'), ('n_node_samples', '<i8'), ('weighted_n_node_samples', '<f8')]
+- got     : {'names': ['left_child', 'right_child', 'feature', 'threshold', 'impurity', 'n_node_samples', 'weighted_n_node_samples', 'missing_go_to_left'], 'formats': ['<i8', '<i8', '<i8', '<f8', '<f8', '<i8', '<f8', 'u1'], 'offsets': [0, 8, 16, 24, 32, 40, 48, 56], 'itemsize': 64}
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 330, in risk_analysis_model
+    model, scaler, features_used = load_model_and_scaler(model_path, scaler_path)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Stock\backend\python\risk_analysis.py", line 303, in load_model_and_scaler
+    raise ValueError(f"Failed to load model or scaler: {e}")
+ValueError: Failed to load model or scaler: node array from the pickle has an incompatible dtype:
+- expected: [('left_child', '<i8'), ('right_child', '<i8'), ('feature', '<i8'), ('threshold', '<f8'), ('impurity', '<f8'), ('n_node_samples', '<i8'), ('weighted_n_node_samples', '<f8')]
+- got     : {'names': ['left_child', 'right_child', 'feature', 'threshold', 'impurity', 'n_node_samples', 'weighted_n_node_samples', 'missing_go_to_left'], 'formats': ['<i8', '<i8', '<i8', '<f8', '<f8', '<i8', '<f8', 'u1'], 'offsets': [0, 8, 16, 24, 32, 40, 48, 56], 'itemsize': 64}
+
+2025-05-25 19:14:10,563 - root - INFO - Performing risk analysis for NVDA
+2025-05-25 19:14:13,511 - root - ERROR - Error fetching data for ticker NVDA: Too Many Requests. Rate limited. Try after a while.
+2025-05-25 19:14:13,512 - root - ERROR - Error in risk analysis model for NVDA: Failed to fetch data for NVDA: Too Many Requests. Rate limited. Try after a while.
+2025-05-25 19:14:13,524 - root - ERROR - Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 58, in get_stock_data
+    hist = stock.history(period=period, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\base.py", line 82, in history
+    return self._lazy_load_price_history().history(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\scrapers\history.py", line 175, in history
+    data = get_fn(
+           ^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 349, in get
+    return self._make_request(url, request_method = self._session.get, user_agent_headers=user_agent_headers, params=params, proxy=proxy, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 411, in _make_request
+    raise YFRateLimitError()
+yfinance.exceptions.YFRateLimitError: Too Many Requests. Rate limited. Try after a while.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 311, in risk_analysis_model
+    data = get_stock_data(new_stock_ticker)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Stock\backend\python\risk_analysis.py", line 75, in get_stock_data
+    raise ValueError(f"Failed to fetch data for {ticker}: {e}")
+ValueError: Failed to fetch data for NVDA: Too Many Requests. Rate limited. Try after a while.
+
+2025-05-25 19:14:19,138 - root - INFO - Performing risk analysis for MSFT
+2025-05-25 19:14:21,650 - root - ERROR - Error fetching data for ticker MSFT: Too Many Requests. Rate limited. Try after a while.
+2025-05-25 19:14:21,650 - root - ERROR - Error in risk analysis model for MSFT: Failed to fetch data for MSFT: Too Many Requests. Rate limited. Try after a while.
+2025-05-25 19:14:21,654 - root - ERROR - Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 58, in get_stock_data
+    hist = stock.history(period=period, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\base.py", line 82, in history
+    return self._lazy_load_price_history().history(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\scrapers\history.py", line 175, in history
+    data = get_fn(
+           ^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 349, in get
+    return self._make_request(url, request_method = self._session.get, user_agent_headers=user_agent_headers, params=params, proxy=proxy, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 411, in _make_request
+    raise YFRateLimitError()
+yfinance.exceptions.YFRateLimitError: Too Many Requests. Rate limited. Try after a while.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 311, in risk_analysis_model
+    data = get_stock_data(new_stock_ticker)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Stock\backend\python\risk_analysis.py", line 75, in get_stock_data
+    raise ValueError(f"Failed to fetch data for {ticker}: {e}")
+ValueError: Failed to fetch data for MSFT: Too Many Requests. Rate limited. Try after a while.
+
+2025-05-26 18:38:24,017 - root - INFO - Performing risk analysis for MSFT
+2025-05-26 18:38:28,604 - root - ERROR - Error fetching data for ticker MSFT: Too Many Requests. Rate limited. Try after a while.
+2025-05-26 18:38:28,604 - root - ERROR - Error in risk analysis model for MSFT: Failed to fetch data for MSFT: Too Many Requests. Rate limited. Try after a while.
+2025-05-26 18:38:28,652 - root - ERROR - Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 58, in get_stock_data
+    hist = stock.history(period=period, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\base.py", line 82, in history
+    return self._lazy_load_price_history().history(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\scrapers\history.py", line 175, in history
+    data = get_fn(
+           ^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 349, in get
+    return self._make_request(url, request_method = self._session.get, user_agent_headers=user_agent_headers, params=params, proxy=proxy, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 411, in _make_request
+    raise YFRateLimitError()
+yfinance.exceptions.YFRateLimitError: Too Many Requests. Rate limited. Try after a while.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 311, in risk_analysis_model
+    data = get_stock_data(new_stock_ticker)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Stock\backend\python\risk_analysis.py", line 75, in get_stock_data
+    raise ValueError(f"Failed to fetch data for {ticker}: {e}")
+ValueError: Failed to fetch data for MSFT: Too Many Requests. Rate limited. Try after a while.
+
+2025-05-26 18:38:30,994 - root - INFO - Performing risk analysis for MSFT
+2025-05-26 18:38:39,078 - root - INFO - Performing risk analysis for AAPL
+2025-05-26 18:38:40,617 - root - ERROR - Error fetching data for ticker AAPL: Too Many Requests. Rate limited. Try after a while.
+2025-05-26 18:38:40,617 - root - ERROR - Error in risk analysis model for AAPL: Failed to fetch data for AAPL: Too Many Requests. Rate limited. Try after a while.
+2025-05-26 18:38:40,619 - root - ERROR - Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 58, in get_stock_data
+    hist = stock.history(period=period, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\base.py", line 82, in history
+    return self._lazy_load_price_history().history(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\scrapers\history.py", line 175, in history
+    data = get_fn(
+           ^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 349, in get
+    return self._make_request(url, request_method = self._session.get, user_agent_headers=user_agent_headers, params=params, proxy=proxy, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 411, in _make_request
+    raise YFRateLimitError()
+yfinance.exceptions.YFRateLimitError: Too Many Requests. Rate limited. Try after a while.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 311, in risk_analysis_model
+    data = get_stock_data(new_stock_ticker)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Stock\backend\python\risk_analysis.py", line 75, in get_stock_data
+    raise ValueError(f"Failed to fetch data for {ticker}: {e}")
+ValueError: Failed to fetch data for AAPL: Too Many Requests. Rate limited. Try after a while.
+
+2025-05-26 18:38:54,623 - root - INFO - Performing risk analysis for META
+2025-05-26 18:38:58,502 - root - ERROR - Error fetching data for ticker META: Too Many Requests. Rate limited. Try after a while.
+2025-05-26 18:38:58,503 - root - ERROR - Error in risk analysis model for META: Failed to fetch data for META: Too Many Requests. Rate limited. Try after a while.
+2025-05-26 18:38:58,506 - root - ERROR - Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 58, in get_stock_data
+    hist = stock.history(period=period, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\base.py", line 82, in history
+    return self._lazy_load_price_history().history(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\scrapers\history.py", line 175, in history
+    data = get_fn(
+           ^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 349, in get
+    return self._make_request(url, request_method = self._session.get, user_agent_headers=user_agent_headers, params=params, proxy=proxy, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 411, in _make_request
+    raise YFRateLimitError()
+yfinance.exceptions.YFRateLimitError: Too Many Requests. Rate limited. Try after a while.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 311, in risk_analysis_model
+    data = get_stock_data(new_stock_ticker)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Stock\backend\python\risk_analysis.py", line 75, in get_stock_data
+    raise ValueError(f"Failed to fetch data for {ticker}: {e}")
+ValueError: Failed to fetch data for META: Too Many Requests. Rate limited. Try after a while.
+
+2025-05-26 18:39:00,744 - root - INFO - Performing risk analysis for META
+2025-05-26 18:39:02,250 - root - ERROR - Error fetching data for ticker META: Too Many Requests. Rate limited. Try after a while.
+2025-05-26 18:39:02,250 - root - ERROR - Error in risk analysis model for META: Failed to fetch data for META: Too Many Requests. Rate limited. Try after a while.
+2025-05-26 18:39:02,252 - root - ERROR - Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 58, in get_stock_data
+    hist = stock.history(period=period, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\base.py", line 82, in history
+    return self._lazy_load_price_history().history(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\scrapers\history.py", line 175, in history
+    data = get_fn(
+           ^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 349, in get
+    return self._make_request(url, request_method = self._session.get, user_agent_headers=user_agent_headers, params=params, proxy=proxy, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 411, in _make_request
+    raise YFRateLimitError()
+yfinance.exceptions.YFRateLimitError: Too Many Requests. Rate limited. Try after a while.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 311, in risk_analysis_model
+    data = get_stock_data(new_stock_ticker)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Stock\backend\python\risk_analysis.py", line 75, in get_stock_data
+    raise ValueError(f"Failed to fetch data for {ticker}: {e}")
+ValueError: Failed to fetch data for META: Too Many Requests. Rate limited. Try after a while.
+
+2025-05-26 18:39:11,447 - root - INFO - Performing risk analysis for GOOGL
+2025-05-26 18:39:13,534 - root - ERROR - Error fetching data for ticker GOOGL: Too Many Requests. Rate limited. Try after a while.
+2025-05-26 18:39:13,534 - root - ERROR - Error in risk analysis model for GOOGL: Failed to fetch data for GOOGL: Too Many Requests. Rate limited. Try after a while.
+2025-05-26 18:39:13,537 - root - ERROR - Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 58, in get_stock_data
+    hist = stock.history(period=period, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\base.py", line 82, in history
+    return self._lazy_load_price_history().history(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\scrapers\history.py", line 175, in history
+    data = get_fn(
+           ^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 349, in get
+    return self._make_request(url, request_method = self._session.get, user_agent_headers=user_agent_headers, params=params, proxy=proxy, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 411, in _make_request
+    raise YFRateLimitError()
+yfinance.exceptions.YFRateLimitError: Too Many Requests. Rate limited. Try after a while.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 311, in risk_analysis_model
+    data = get_stock_data(new_stock_ticker)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Stock\backend\python\risk_analysis.py", line 75, in get_stock_data
+    raise ValueError(f"Failed to fetch data for {ticker}: {e}")
+ValueError: Failed to fetch data for GOOGL: Too Many Requests. Rate limited. Try after a while.
+
+2025-05-26 18:39:38,608 - root - INFO - Performing risk analysis for AMZN
+2025-05-26 18:39:47,882 - root - INFO - Performing risk analysis for MSFT
+2025-05-26 18:39:49,698 - root - ERROR - Error fetching data for ticker MSFT: Too Many Requests. Rate limited. Try after a while.
+2025-05-26 18:39:49,698 - root - ERROR - Error in risk analysis model for MSFT: Failed to fetch data for MSFT: Too Many Requests. Rate limited. Try after a while.
+2025-05-26 18:39:49,702 - root - ERROR - Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 58, in get_stock_data
+    hist = stock.history(period=period, interval=interval)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\base.py", line 82, in history
+    return self._lazy_load_price_history().history(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\scrapers\history.py", line 175, in history
+    data = get_fn(
+           ^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 349, in get
+    return self._make_request(url, request_method = self._session.get, user_agent_headers=user_agent_headers, params=params, proxy=proxy, timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\utils.py", line 104, in wrapper
+    result = func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Manas\AppData\Roaming\Python\Python311\site-packages\yfinance\data.py", line 411, in _make_request
+    raise YFRateLimitError()
+yfinance.exceptions.YFRateLimitError: Too Many Requests. Rate limited. Try after a while.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "E:\Stock\backend\python\risk_analysis.py", line 311, in risk_analysis_model
+    data = get_stock_data(new_stock_ticker)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Stock\backend\python\risk_analysis.py", line 75, in get_stock_data
+    raise ValueError(f"Failed to fetch data for {ticker}: {e}")
+ValueError: Failed to fetch data for MSFT: Too Many Requests. Rate limited. Try after a while.
+

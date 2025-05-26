@@ -50,7 +50,7 @@ def get_stock_data(ticker, period='1y', interval='1d'):
     """
     Fetch historical stock data for a given ticker using Yahoo Finance API.
     Dynamically adjusts the period for newly listed stocks if data is unavailable.
-    
+
     Uses LRU cache to improve performance for repeated requests.
     """
     try:
@@ -70,9 +70,6 @@ def get_stock_data(ticker, period='1y', interval='1d'):
 
         return hist
 
-    except yf.shared.exceptions.YFinanceError as yfe:
-        logging.error(f"YFinance API error for {ticker}: {yfe}")
-        raise ValueError(f"Yahoo Finance API error: {yfe}")
     except Exception as e:
         logging.error(f"Error fetching data for ticker {ticker}: {e}")
         raise ValueError(f"Failed to fetch data for {ticker}: {e}")

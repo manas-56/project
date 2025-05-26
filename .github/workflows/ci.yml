@@ -1,0 +1,25 @@
+name: GitHub CI
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test-and-trigger-jenkins:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+      
+      - name: Run Unit Tests
+        run: |
+          echo "Running unit tests..."
+          python -m unittest discover -s backend/python -p "*.py"
+
+      - name: Trigger Jenkins Build
+        env:
+          JENKINS_USER: ${{ secrets.JENKINS_USER }}
+          JENKINS_TOKEN: ${{ secrets.JENKINS_TOKEN }}
+        run: |
+          curl -X POST http://192.168.1.2:8080/job/test/build \
+          --user $JENKINS_USER:$JENKINS_TOKEN
